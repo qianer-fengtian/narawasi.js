@@ -1,0 +1,48 @@
+{
+  "name": "narawasi",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "author": "qianer-fengtian",
+  "license": "ISC",
+  "main": "index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "ts-node -r tsconfig-paths/register src/index.ts",
+    "start": "node dist/index.js --config-path config.yml",
+    "prebuild": "npm run test && rimraf dist",
+    "build": "run-p build:*",
+    "build:common": "tsc",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "lint": "run-s lint:*",
+    "lint:eslint": "eslint src/**/*",
+    "lint:prettier": "prettier --write .",
+    "test": "jest --passWithNoTests",
+    "prepare": "simple-git-hooks",
+    "prepublish": "npm run bulid"
+  },
+  "volta": {
+    "node": "18.15.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.14.6",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "eslint": "^8.35.0",
+    "jest": "^29.5.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.4",
+    "rimraf": "^4.4.0",
+    "simple-git-hooks": "^2.8.1",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.2",
+    "typescript": "^4.9.5"
+  }
+}
